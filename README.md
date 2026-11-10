@@ -2,13 +2,11 @@
 
 **English** | [한국어](README.ko.md)
 
-MD/TXT EasyViewer is a Windows reader for Markdown and text files. Browse a document's folder as you read, and see changes saved in an external editor without reopening the file.
+**MD/TXT EasyViewer** is a clean, fast way to read Markdown and text files on Windows.
 
-- Folder navigation, optional tabs, and separate document and folder history
-- Search the current folder or Markdown and text files indexed by Windows Search
-- Dark mode, document zoom, printing, and opening files in an external editor
-- Mathematical notation, including fractions, scripts, matrices, and selected LaTeX commands
-- English and Korean interfaces, with replaceable language files
+- **Open documents quickly** — browse a file and its surrounding folders.
+- **See saved changes automatically** — updates from an external editor appear in the open document.
+- **Read in tabs** — open multiple files and switch between them easily.
 
 ## Why this project?
 
