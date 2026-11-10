@@ -1,0 +1,7 @@
+# Build output and local state
+/build/
+*.user
+*.suo
+*.log
+.DS_Store
+Thumbs.db
