@@ -1,72 +1,73 @@
-﻿# MD/TXT EasyViewer
+# MD/TXT EasyViewer
 
-**MD/TXT EasyViewer**는 폴더를 탐색하면서 Markdown과 텍스트 문서를 빠르게 읽는 Windows 뷰어입니다. 외부 편집기에서 파일을 저장하면 열려 있는 문서에 변경 사항이 반영됩니다.
+**English** | [한국어](README.ko.md)
 
-- 파일이 있는 폴더 탐색, 선택적인 탭, 문서와 폴더의 앞뒤 이동
-- 현재 폴더 검색 또는 Windows 검색에 색인된 MD·TXT 파일 검색
-- 다크 모드, 문서 확대·축소, 본문 인쇄, 외부 편집기로 열기
-- Markdown 수식 표시: 분수, 첨자, 행렬, 경우 나누기 등 일부 LaTeX 문법
-- 영어·한국어 인터페이스와 교체 가능한 언어 파일
+MD/TXT EasyViewer is a Windows reader for Markdown and text files. Browse a document's folder as you read, and see changes saved in an external editor without reopening the file.
 
-## 만든 이유
+- Folder navigation, optional tabs, and separate document and folder history
+- Search the current folder or Markdown and text files indexed by Windows Search
+- Dark mode, document zoom, printing, and opening files in an external editor
+- Mathematical notation, including fractions, scripts, matrices, and selected LaTeX commands
+- English and Korean interfaces, with replaceable language files
 
-Markdown이나 텍스트 파일을 읽을 때 편집기 화면을 거치지 않고, 파일이 있는 폴더와 주변 문서를 바로 탐색할 수 있는 가벼운 뷰어가 필요했습니다. 문서를 열어 둔 상태에서도 외부 편집기의 저장 결과를 확인하는 것을 목표로 했습니다.
+## Why this project?
 
-## 구현과 설계
+Reading a Markdown or text file should not require navigating an editor interface. This project explores a lightweight reading experience with nearby files readily available and saved edits reflected in the viewer.
 
-- **화면과 파일 접근 분리:** C#의 로컬 HTTP 서버가 폴더·파일과 Windows 기능을 제공하고, Microsoft Edge 앱 창이 HTML/CSS/JavaScript 화면을 표시합니다. 서버는 루프백 주소와 실행마다 생성한 경로 토큰을 사용합니다.
-- **문서와 폴더 탐색:** 문서 이동 기록과 폴더 이동 기록을 분리해, 마우스 앞뒤 버튼이 커서 위치에 따라 다르게 동작하도록 했습니다. 폴더를 이동해도 열린 문서와 탭은 유지합니다.
-- **변경 반영:** 보이는 문서를 약 2초 간격으로 다시 확인하고, 내용이 달라지면 스크롤 위치를 유지하며 갱신합니다.
-- **Windows 통합:** 설치 시 파일 연결 후보와 시작 메뉴에 등록하고, 감지된 외부 편집기를 선택할 수 있습니다. 기존 기본 앱은 강제로 변경하지 않습니다.
-- **수식 표시:** 외부 수식 라이브러리 없이 LaTeX 문법의 일부를 MathML로 변환합니다. 지원하지 않는 수식은 원문으로 남깁니다.
+## Implementation and design
 
-## 확인한 항목
+- **UI and file access:** A C# loopback HTTP server handles local files and Windows integration; an app window in Microsoft Edge renders the HTML/CSS/JavaScript interface. A new path token is generated for each server instance.
+- **Navigation:** Separate document and folder histories let the mouse back and forward buttons behave according to the area under the pointer. Folder navigation preserves open tabs and the current document.
+- **Live updates:** The visible document is checked approximately every two seconds and re-rendered when its content changes, retaining the scroll position.
+- **Windows integration:** The installer registers the app as a file-opening option and creates a Start menu shortcut without changing existing defaults. The viewer detects common external editors.
+- **Math rendering:** A built-in renderer converts a subset of LaTeX to MathML without an external math library. Unsupported expressions remain visible as source.
 
-Windows에서 뷰어와 설치 프로그램 빌드를 확인했습니다. Edge 화면에서 탭과 폴더 이동, 사이드바 상태 복원, 문서 변경 반영, 주요 수식과 Markdown 문자 표시를 점검했으며, 별도 테스트 위치에서 설치 파일 복사와 앱 등록을 확인했습니다. 아직 저장소에 포함된 자동 테스트나 CI는 없습니다.
+## Validation
 
-## 설치
+Viewer and installer builds were checked on Windows. Edge-based checks covered tab and folder navigation, sidebar state, live updates, common equations, and Markdown character handling. Installation file copying and app registration were checked in an isolated test location. An automated test suite and CI are not yet included in this repository.
 
-[**⬇ Windows 설치 파일 다운로드**](https://github.com/Kor-mook/md-txt-easyviewer/releases/latest/download/MD-TXT-EasyViewer-Setup.exe)
+## Download
 
-> 첫 릴리스에 `MD-TXT-EasyViewer-Setup.exe`를 첨부하면 위 다운로드 링크가 동작합니다.
+[**Download for Windows**](https://github.com/Kor-mook/md-txt-easyviewer/releases/latest/download/MD-TXT-EasyViewer-Setup.exe)
 
-다운로드한 `MD-TXT-EasyViewer-Setup.exe`를 실행합니다. 설치 파일은 필요한 앱 파일을 포함하므로 설치 중 인터넷 연결이 필요하지 않습니다. 현재 사용자 계정에 설치하고 시작 메뉴와 Windows 기본 앱 선택 목록에 등록합니다. 기존 기본 앱은 변경하지 않습니다.
+Run the downloaded installer. It includes the application files and does not require an internet connection during installation. It installs for the current user and registers an app choice without changing the current default.
 
-현재 빌드는 코드 서명이 없으며 Windows에서 보안 경고가 나타날 수 있습니다. Microsoft Edge와 Windows가 필요합니다.
+The current build is unsigned and Windows may display a warning. Windows and Microsoft Edge are required.
 
-## 빌드
+## Add a language
 
-Windows에서 .NET Framework 4.x C# 컴파일러가 필요합니다. 저장소 루트에서 다음 명령을 실행합니다.
+English is the default; Korean is included. To add another language, copy `src/viewer/locales/en.json` and translate the `name` and `strings` values. Save it as UTF-8 JSON in the installed application's `%LOCALAPPDATA%/Programs/MDTXEasyViewer/locales/` folder, using a file name such as `fr.json`. Open Settings to select it. File names must contain only letters, numbers, hyphens, or underscores (up to 40 characters). Missing strings fall back to English. Native Windows dialogs and setup messages may not use the selected language.
+
+## Build
+
+A Windows machine with the .NET Framework 4.x C# compiler is required. From the repository root:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build.ps1
 ```
 
-결과물은 `build/viewer/MarkdownViewer.exe`와 `build/MD-TXT-EasyViewer-Setup.exe`에 생성됩니다. `build/`는 Git에 포함되지 않습니다. 외부 패키지를 설치하거나 다운로드하지 않습니다.
+The outputs are `build/viewer/MarkdownViewer.exe` and `build/MD-TXT-EasyViewer-Setup.exe`. The `build/` directory is ignored by Git. The build does not install or download external packages.
 
-## 구조
+## Project layout
 
 ```text
-src/viewer/       뷰어 소스와 언어 파일
-src/installer/    단일 설치 프로그램과 설치 스크립트
-assets/           앱 아이콘
-scripts/          빌드 스크립트
-사용법.txt         사용 안내
+src/viewer/       Viewer source and language files
+src/installer/    Single-file installer and installation script
+assets/           Application icon
+scripts/          Build script
+USER_GUIDE.md     English user guide
+사용법.txt         Korean user guide
 ```
 
-## 참고
+## Limitations and next steps
 
-이 앱은 로컬 파일을 읽기 전용으로 표시하며, 실행 중 로컬 주소의 HTTP 서버를 통해 Microsoft Edge 앱 창에 문서를 표시합니다. Windows 전체 검색은 Windows가 색인한 파일만 대상으로 합니다.
+- Windows-wide search only covers files indexed by Windows Search.
+- Markdown and LaTeX support are incomplete; unsupported equations are displayed as source.
+- Improve uninstall and update handling, background process cleanup, and verification on clean Windows installations.
+- Add automated tests and CI, and evaluate code signing.
 
-수식 렌더러는 모든 LaTeX 문법을 지원하지 않습니다. 지원하지 않는 명령은 원문으로 표시됩니다. 자세한 사용법은 [사용법.txt](사용법.txt)를 참고하세요.
+The application reads local files through a loopback HTTP server. See the [English user guide](USER_GUIDE.md) or [Korean user guide](사용법.txt) for more details.
 
-## 앞으로 개선할 점
+## License
 
-- 제거 및 업데이트 과정 정리와 새로운 Windows 환경에서의 설치 검증
-- 자동 테스트와 CI 추가
-- Markdown·LaTeX 지원 범위 확장 및 오류 사례 보완
-- 백그라운드 프로세스 종료 방식과 코드 서명 검토
-
-## 라이선스
-
-아직 라이선스를 지정하지 않았습니다. 공개 전에 사용 및 배포 조건을 정해야 합니다.
+No license has been selected yet. Terms of use and distribution need to be determined before others can rely on permission to use or redistribute the software.

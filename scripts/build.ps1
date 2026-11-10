@@ -13,7 +13,7 @@ New-Item -ItemType Directory -Path $viewerOutput,(Join-Path $viewerOutput 'local
 if ($LASTEXITCODE -ne 0) { throw 'Viewer compilation failed.' }
 foreach ($name in @('index.html','math-renderer.js')) { Copy-Item -LiteralPath (Join-Path $source $name) -Destination $viewerOutput -Force }
 Copy-Item -LiteralPath $icon -Destination $viewerOutput -Force
-Copy-Item -LiteralPath (Join-Path $project '사용법.txt') -Destination $viewerOutput -Force
+Copy-Item -LiteralPath (Join-Path $project 'USER_GUIDE.md'),(Join-Path $project '사용법.txt') -Destination $viewerOutput -Force
 Copy-Item -LiteralPath (Join-Path $installer 'install.ps1'),(Join-Path $installer 'install.cmd') -Destination $viewerOutput -Force
 Get-ChildItem -LiteralPath (Join-Path $source 'locales') -Filter '*.json' -File | Copy-Item -Destination (Join-Path $viewerOutput 'locales') -Force
 Add-Type -AssemblyName System.IO.Compression
@@ -22,7 +22,7 @@ $payload = Join-Path $output ('payload-' + [Guid]::NewGuid().ToString('N') + '.z
 try {
     $archive = [IO.Compression.ZipFile]::Open($payload, [IO.Compression.ZipArchiveMode]::Create)
     try {
-        foreach ($name in @('MarkdownViewer.exe','index.html','math-renderer.js','app-icon.ico','사용법.txt','install.ps1','install.cmd')) {
+        foreach ($name in @('MarkdownViewer.exe','index.html','math-renderer.js','app-icon.ico','USER_GUIDE.md','사용법.txt','install.ps1','install.cmd')) {
             [void][IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, (Join-Path $viewerOutput $name), $name, [IO.Compression.CompressionLevel]::Optimal)
         }
         foreach ($file in Get-ChildItem -LiteralPath (Join-Path $source 'locales') -Filter '*.json' -File) {

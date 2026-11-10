@@ -4,11 +4,11 @@ try {
     $source = $PSScriptRoot
     $destination = Join-Path $env:LOCALAPPDATA 'Programs\MDTXEasyViewer'
     $exe = Join-Path $destination 'MarkdownViewer.exe'
-    $required = @('MarkdownViewer.exe','index.html','math-renderer.js','app-icon.ico','사용법.txt')
-    foreach ($file in $required) { if (-not (Test-Path -LiteralPath (Join-Path $source $file) -PathType Leaf)) { throw "설치 파일이 없습니다: $file" } }
-    if (-not (Test-Path -LiteralPath (Join-Path $source 'locales\en.json') -PathType Leaf) -or -not (Test-Path -LiteralPath (Join-Path $source 'locales\ko.json') -PathType Leaf)) { throw '언어 파일이 없습니다.' }
+    $required = @('MarkdownViewer.exe','index.html','math-renderer.js','app-icon.ico','USER_GUIDE.md','사용법.txt')
+    foreach ($file in $required) { if (-not (Test-Path -LiteralPath (Join-Path $source $file) -PathType Leaf)) { throw "Missing setup file: $file" } }
+    if (-not (Test-Path -LiteralPath (Join-Path $source 'locales\en.json') -PathType Leaf) -or -not (Test-Path -LiteralPath (Join-Path $source 'locales\ko.json') -PathType Leaf)) { throw 'Language files are missing.' }
     $running = Get-CimInstance Win32_Process -Filter "Name = 'MarkdownViewer.exe'" | Where-Object { $_.ExecutablePath -eq $exe }
-    if ($running) { throw '설치된 MD/TXT EasyViewer를 모두 종료한 후 다시 실행해 주세요.' }
+    if ($running) { throw 'Close all installed MD/TXT EasyViewer windows before running setup again.' }
     New-Item -ItemType Directory -Path $destination -Force | Out-Null
     foreach ($file in $required) { Copy-Item -LiteralPath (Join-Path $source $file) -Destination (Join-Path $destination $file) -Force }
     New-Item -ItemType Directory -Path (Join-Path $destination 'locales') -Force | Out-Null
@@ -47,7 +47,7 @@ try {
     $shortcut.IconLocation = "$exe,0"
     $shortcut.Description = $name
     $shortcut.Save()
-    Write-Host "설치 완료: $destination"
-    Write-Host 'Windows 설정 > 앱 > 기본 앱에서 MD/TXT EasyViewer를 선택할 수 있습니다.'
-} catch { Write-Host $_ -ForegroundColor Red; if (-not $NoPause) { Read-Host 'Enter 키를 눌러 종료' }; exit 1 }
-if (-not $NoPause) { Read-Host 'Enter 키를 눌러 종료' }
+    Write-Host "Installed: $destination"
+    Write-Host 'Choose MD/TXT EasyViewer in Windows Settings > Apps > Default apps.'
+} catch { Write-Host $_ -ForegroundColor Red; if (-not $NoPause) { Read-Host 'Press Enter to exit' }; exit 1 }
+if (-not $NoPause) { Read-Host 'Press Enter to exit' }
