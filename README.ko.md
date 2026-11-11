@@ -31,6 +31,8 @@ Windows에서 뷰어와 설치 프로그램 빌드를 확인했습니다. Edge �
 
 [**⬇ Windows 설치 파일 다운로드**](https://github.com/Kor-mook/md-txt-easyviewer/releases/latest/download/MD-TXT-EasyViewer-Setup.exe)
 
+[**Microsoft Store에서 보기**](https://apps.microsoft.com/detail/9NH6VL2C69ZL) — 스토어 이용 가능 여부는 인증 및 게시 상태에 따라 달라집니다.
+
 다운로드한 `MD-TXT-EasyViewer-Setup.exe`를 실행합니다. 설치 파일은 필요한 앱 파일을 포함하므로 설치 중 인터넷 연결이 필요하지 않습니다. 현재 사용자 계정에 설치하고 시작 메뉴와 Windows 기본 앱 선택 목록에 등록합니다. 기존 기본 앱은 변경하지 않습니다.
 
 현재 빌드는 코드 서명이 없으며 Windows에서 보안 경고가 나타날 수 있습니다. Microsoft Edge와 Windows가 필요합니다.

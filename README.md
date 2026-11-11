@@ -31,6 +31,8 @@ Viewer and installer builds were checked on Windows. Edge-based checks covered t
 
 [**Download for Windows**](https://github.com/Kor-mook/md-txt-easyviewer/releases/latest/download/MD-TXT-EasyViewer-Setup.exe)
 
+[**View on Microsoft Store**](https://apps.microsoft.com/detail/9NH6VL2C69ZL) — Store availability depends on certification and publication.
+
 Run the downloaded installer. It includes the application files and does not require an internet connection during installation. It installs for the current user and registers an app choice without changing the current default.
 
 The current build is unsigned and Windows may display a warning. Windows and Microsoft Edge are required.
