@@ -7,6 +7,7 @@
 - **Open documents quickly** — browse a file and its surrounding folders.
 - **See saved changes automatically** — updates from an external editor appear in the open document.
 - **Read in tabs** — open multiple files and switch between them easily.
+- **Add languages** — extend the interface with your own JSON language files.
 
 ## Why this project?
 
@@ -38,7 +39,7 @@ The current build is unsigned and Windows may display a warning. Windows and Mic
 
 ## Add a language
 
-English is the default; Korean is included. To add another language, copy `src/viewer/locales/en.json` and translate the `name` and `strings` values. Save it as UTF-8 JSON in the installed application's `%LOCALAPPDATA%/Programs/MDTXEasyViewer/locales/` folder, using a file name such as `fr.json`. Open Settings to select it. File names must contain only letters, numbers, hyphens, or underscores (up to 40 characters). Missing strings fall back to English. Native Windows dialogs and setup messages may not use the selected language.
+English is the default; Korean is included. With the GitHub installer, you can add another language without changing the application code: copy `src/viewer/locales/en.json` and translate the `name` and `strings` values. Save it as UTF-8 JSON in the installed application's `%LOCALAPPDATA%/Programs/MDTXEasyViewer/locales/` folder, using a file name such as `fr.json`. Open Settings to select it. File names must contain only letters, numbers, hyphens, or underscores (up to 40 characters). Missing strings fall back to English. Native Windows dialogs and setup messages may not use the selected language. Adding language files to the Microsoft Store package has not yet been verified.
 
 ## Build
 
