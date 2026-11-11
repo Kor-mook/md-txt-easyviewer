@@ -62,6 +62,7 @@ USER_GUIDE.md     English user guide
 
 ## Limitations and next steps
 
+- Add a shortcut in Settings to Windows default app settings for `.md` and `.txt` files.
 - Windows-wide search only covers files indexed by Windows Search.
 - Markdown and LaTeX support are incomplete; unsupported equations are displayed as source.
 - Improve uninstall and update handling, background process cleanup, and verification on clean Windows installations.
