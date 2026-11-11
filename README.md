@@ -21,9 +21,7 @@ Reading a Markdown or text file should not require navigating an editor interfac
 - **Windows integration:** The installer registers the app as a file-opening option and creates a Start menu shortcut without changing existing defaults. The viewer detects common external editors.
 - **Math rendering:** A built-in renderer converts a subset of LaTeX to MathML without an external math library. Unsupported expressions remain visible as source.
 
-## First Microsoft Store submission
-
-This project was also my first experience submitting an app to the Microsoft Store. I packaged the desktop app as MSIX, configured its Store identity, and worked through package validation and the certification submission process.
+While working on distribution, I also got to experience packaging an app as MSIX and submitting it to the Microsoft Store for the first time.
 
 ## Validation
 
