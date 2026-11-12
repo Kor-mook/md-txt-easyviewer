@@ -66,6 +66,7 @@ USER_GUIDE.md     English user guide
 
 - Add a shortcut in Settings to Windows default app settings for `.md` and `.txt` files.
 - Open Markdown files launched while the app is running as new tabs in the existing window; allow tabs to be dragged out into separate windows.
+- Open PDF files by dragging and dropping them into the app.
 - Create a Discord channel for feedback and add a Discord icon in Settings linking to it.
 - Reorganize the Settings screen for a cleaner layout.
 - Windows-wide search only covers files indexed by Windows Search.
